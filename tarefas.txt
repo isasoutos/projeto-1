@@ -1,0 +1,2 @@
+comer 1 2
+dormir 2 8
