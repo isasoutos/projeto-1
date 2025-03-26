@@ -1,3 +1,4 @@
+comer 2 1
 dormir 2 8
 comer 1 2
 dormir 2 8
