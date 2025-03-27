@@ -13,18 +13,19 @@ int main(){
         if(opcao == 1){
             Tarefa *nova = cria_tarefa();
             inserir_tarefa(lista, nova);
-        } else if(opcao == 2){
+        }else if(opcao == 2){
             remover_tarefa(lista);
         }else if(opcao == 3){
             consultar_tarefa(lista);
-        } else if(opcao == 4){
+        }else if(opcao == 4){
             mostra_tarefas(lista);
         }else if (opcao == 5){
             ler_arquivos(lista);
         }else if (opcao == 6){
             gravar_arquivos(lista);
-        }
-    }while (opcao != 7);
+        }else if (opcao == 7){
+            ordenar_tarefas_por_prioridade
+    }while (opcao != 8);
         
 }
 
@@ -169,4 +170,16 @@ void gravar_arquivos(Lista *lista) {
 
     fclose(file); 
     printf("Tarefas salvas com sucesso!\n");
+}
+
+void ordenar_tarefas_por_prioridade(Lista *lista) {
+    for (int i = 0; i < lista->qtde - 1; i++) {
+        for (int j = i + 1; j < lista->qtde; j++) {
+            if (lista->vetor[i]->prioridade < lista->vetor[j]->prioridade) {
+                Tarefa *temp = lista->vetor[i];
+                lista->vetor[i] = lista->vetor[j];
+                lista->vetor[j] = temp;
+            }
+        }
+    }
 }
