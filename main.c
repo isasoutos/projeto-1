@@ -148,6 +148,8 @@ void ler_arquivos(Lista *lista) {
         return;
     }
 
+    lista->qtde = 0;
+
     while (!feof(file)) {
         Tarefa *nova = malloc(sizeof(Tarefa));
         if (fscanf(file, "%s %d %d", nova->nome, &nova->prioridade, &nova->duracao) == 3) {
