@@ -9,6 +9,5 @@
    - Também foi adicionada a função para a gravação de arquivos.
 
 2. Compilação do código
-   - cd codes
    - gcc main.c -o main
    - ./main
