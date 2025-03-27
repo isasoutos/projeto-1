@@ -179,14 +179,12 @@ void gravar_arquivos(Lista *lista) {
     printf("Tarefas salvas com sucesso!\n");
 }
 
+
 void ordenar_tarefas_por_prioridade(Lista *lista) {
     if (lista->qtde == 0) {
         printf("Nenhuma tarefa para ordenar.\n");
         return; 
     }
-
-    printf("Ordenando tarefas por prioridade...\n");
-
 
     for (int i = 0; i < lista->qtde - 1; i++) {
         for (int j = i + 1; j < lista->qtde; j++) {
@@ -198,6 +196,5 @@ void ordenar_tarefas_por_prioridade(Lista *lista) {
         }
     }
 
-    printf("Tarefas ordenadas com sucesso!\n");
-    mostra_tarefas(lista);  
+    printf("Tarefas ordenadas com sucesso por prioridade decrescente!\n");
 }
