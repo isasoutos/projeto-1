@@ -7,7 +7,7 @@ int main(){
     Lista *lista = malloc(sizeof(Lista));
     int opcao;
     
-    do{
+    do {
         opcao = menu();
 
         if(opcao == 1){
@@ -24,19 +24,25 @@ int main(){
         }else if (opcao == 6){
             gravar_arquivos(lista);
         }else if (opcao == 7){
-            ordenar_tarefas_por_prioridade
-    }while (opcao != 8);
-        
+            ler_arquivos(lista);
+            ordenar_tarefas_por_prioridade(lista);
+            mostra_tarefas(lista);
+        }
+    } while (opcao != 8); 
+
+    free (lista);
+    return 0;
 }
 
 int inserir_tarefa(Lista *lista, Tarefa *tarefa){
     if(lista->qtde == 100){
         return 0;
-    }
+     }
     lista->vetor[lista->qtde] = tarefa;
     lista->qtde++;
     return 1;
 }
+
 
 Tarefa *cria_tarefa(){
     Tarefa *nova = malloc(sizeof(Tarefa));
@@ -59,7 +65,7 @@ void mostra_tarefas(Lista *lista){
     }
 }
 
-int menu(){
+int menu() {
     int opcao;
     
     printf("--------------------------\n");
@@ -69,7 +75,8 @@ int menu(){
     printf("4 - mostrar tarefas\n");
     printf("5 - ler arquivo\n");
     printf("6 - gravar arquivo\n");
-    printf("7 - sair\n");
+    printf("7 - ordenar tarefas por prioridade\n"); 
+    printf("8 - sair\n"); 
     printf("--------------------------\n");
     printf("Digite sua opção: ");
     scanf("%d", &opcao);
@@ -173,6 +180,14 @@ void gravar_arquivos(Lista *lista) {
 }
 
 void ordenar_tarefas_por_prioridade(Lista *lista) {
+    if (lista->qtde == 0) {
+        printf("Nenhuma tarefa para ordenar.\n");
+        return; 
+    }
+
+    printf("Ordenando tarefas por prioridade...\n");
+
+
     for (int i = 0; i < lista->qtde - 1; i++) {
         for (int j = i + 1; j < lista->qtde; j++) {
             if (lista->vetor[i]->prioridade < lista->vetor[j]->prioridade) {
@@ -182,4 +197,7 @@ void ordenar_tarefas_por_prioridade(Lista *lista) {
             }
         }
     }
+
+    printf("Tarefas ordenadas com sucesso!\n");
+    mostra_tarefas(lista);  
 }
