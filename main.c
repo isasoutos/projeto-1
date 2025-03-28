@@ -6,7 +6,7 @@
 int main(){
     Lista *lista = malloc(sizeof(Lista));
     int opcao;
-    
+
     do {
         opcao = menu();
 
@@ -23,14 +23,10 @@ int main(){
             ler_arquivos(lista);
         }else if (opcao == 6){
             gravar_arquivos(lista);
-        }else if (opcao == 7){
-            ler_arquivos(lista);
-            ordenar_tarefas_por_prioridade(lista);
-            mostra_tarefas(lista);
         }
-    } while (opcao != 8); 
+    } while (opcao != 7);
 
-    free (lista);
+    free(lista);
     return 0;
 }
 
@@ -42,7 +38,6 @@ int inserir_tarefa(Lista *lista, Tarefa *tarefa){
     lista->qtde++;
     return 1;
 }
-
 
 Tarefa *cria_tarefa(){
     Tarefa *nova = malloc(sizeof(Tarefa));
@@ -67,7 +62,7 @@ void mostra_tarefas(Lista *lista){
 
 int menu() {
     int opcao;
-    
+
     printf("--------------------------\n");
     printf("1 - inserir tarefa\n");
     printf("2 - remover tarefa\n");
@@ -75,15 +70,13 @@ int menu() {
     printf("4 - mostrar tarefas\n");
     printf("5 - ler arquivo\n");
     printf("6 - gravar arquivo\n");
-    printf("7 - ordenar tarefas por prioridade\n"); 
-    printf("8 - sair\n"); 
+    printf("7 - sair\n"); 
     printf("--------------------------\n");
     printf("Digite sua opção: ");
     scanf("%d", &opcao);
 
     return opcao;
 }
-
 void remover_tarefa(Lista *lista){
     char tarefa[20];
     int i;
@@ -148,7 +141,6 @@ void ler_arquivos(Lista *lista) {
         return;
     }
 
-    lista->qtde = 0;
 
     while (!feof(file)) {
         Tarefa *nova = malloc(sizeof(Tarefa));
@@ -181,22 +173,40 @@ void gravar_arquivos(Lista *lista) {
     printf("Tarefas salvas com sucesso!\n");
 }
 
-
-void ordenar_tarefas_por_prioridade(Lista *lista) {
+void editar_tarefa(Lista *lista) {
     if (lista->qtde == 0) {
-        printf("Nenhuma tarefa para ordenar.\n");
-        return; 
+        printf("Nenhuma tarefa cadastrada para editar.\n");
+        return;
     }
 
-    for (int i = 0; i < lista->qtde - 1; i++) {
-        for (int j = i + 1; j < lista->qtde; j++) {
-            if (lista->vetor[i]->prioridade < lista->vetor[j]->prioridade) {
-                Tarefa *temp = lista->vetor[i];
-                lista->vetor[i] = lista->vetor[j];
-                lista->vetor[j] = temp;
+    char nome_tarefa[20];
+    printf("Digite o nome da tarefa que deseja editar: ");
+    scanf("%s", nome_tarefa);
+
+    for (int i = 0; i < lista->qtde; i++) {
+        if (strcmp(lista->vetor[i]->nome, nome_tarefa) == 0) {
+            printf("Tarefa encontrada!\n");
+            printf("Digite o novo nome (ou pressione ENTER para manter o atual): ");
+            scanf("%s", lista->vetor[i]->nome);
+
+            printf("Digite a nova prioridade (ou -1 para manter a atual): ");
+            int nova_prioridade;
+            scanf("%d", &nova_prioridade);
+            if (nova_prioridade != -1) {
+                lista->vetor[i]->prioridade = nova_prioridade;
             }
+
+            printf("Digite a nova duração (ou -1 para manter a atual): ");
+            int nova_duracao;
+            scanf("%d", &nova_duracao);
+            if (nova_duracao != -1) {
+                lista->vetor[i]->duracao = nova_duracao;
+            }
+
+            printf("Tarefa atualizada com sucesso!\n");
+            return;
         }
     }
 
-    printf("Tarefas ordenadas com sucesso por prioridade decrescente!\n");
+    printf("Tarefa não encontrada!\n");
 }

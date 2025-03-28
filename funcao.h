@@ -27,4 +27,4 @@ void gravar_arquivos(Lista *lista);
 
 void ler_arquivos(Lista *);
 
-void ordenar_tarefas_por_prioridade(Lista *);
+void editar_tarefa(Lista *lista);
