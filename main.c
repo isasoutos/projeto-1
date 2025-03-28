@@ -23,8 +23,10 @@ int main(){
             ler_arquivos(lista);
         }else if (opcao == 6){
             gravar_arquivos(lista);
+        }else if (opcao == 7){
+            editar_tarefa(lista);
         }
-    } while (opcao != 7);
+    } while (opcao != 8);
 
     free(lista);
     return 0;
