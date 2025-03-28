@@ -8,7 +8,7 @@ Matéria: CP230
    - Não estava compilando com o main em outro arquivo, então foi realizado a junção das funções e do main em um arquivo;
    - Foi adicionado a função para a leitura de arquivos;
    - Também foi adicionada a função para a gravação de arquivos;
-   - Tentamos adicionar a função para colocar as tarefas em ordem crescente, infelizmente não foi possível, pois a prioridade é uma reposta do usuário e não opcao proposta;
+   - Tentamos adicionar a função para colocar as tarefas em ordem crescente, infelizmente não foi possível, pois a prioridade é uma reposta do usuário e não opção proposta;
    - Então resolvemos para adicionar outra função ao qual daria para editar uma tarefa que já está criada.
 
 2. Compilação do código
