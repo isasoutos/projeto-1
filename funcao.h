@@ -23,8 +23,8 @@ void remover_tarefa(Lista *);
 
 void consultar_tarefa(Lista *);
 
-void gravar_arquivos(Lista *lista);
+void gravar_arquivos(Lista *);
 
 void ler_arquivos(Lista *);
 
-void editar_tarefa(Lista *lista);
+void editar_tarefa(Lista *);

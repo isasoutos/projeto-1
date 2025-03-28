@@ -72,7 +72,8 @@ int menu() {
     printf("4 - mostrar tarefas\n");
     printf("5 - ler arquivo\n");
     printf("6 - gravar arquivo\n");
-    printf("7 - sair\n"); 
+    printf("7 - editar arquivo\n");
+    printf("8 - sair\n"); 
     printf("--------------------------\n");
     printf("Digite sua opção: ");
     scanf("%d", &opcao);
